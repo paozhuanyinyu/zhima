@@ -1112,7 +1112,7 @@ window.__require = function e(t, n, o) {
                         opacity: 255
                     }).to(.3, {
                         opacity: 0
-                    }).union().repeatForever().start(), this.lineNode.children[0].active = !1, this.fruitS = ["PuTaoS", "YingTaoS", "JuZiS", "NingMengS", "MiHouTaoS", "XiHongShiS", "TaoS", "BoLuoS", "YeZiS", "XiGuaS"], this.createOneFruit(0)
+                    }).union().repeatForever().start(), this.lineNode.children[0].active = !1, this.fruitS = ["PuTaoS", "YingTaoS", "JuZiS", "NingMengS", "MiHouTaoS", "XiHongShiS", "TaoS", "BoLuoS", "YeZiS", "XiGuaS"], this.createOneFruit(9)
                 }, t.prototype.update = function(e) {
                     a.default.GameUpdateCtrl, this.lineNode.children[0].y - n.Instance.fruitHeigth < 100 && this.lineNode.children[0].y - n.Instance.fruitHeigth >= 0 && (this.lineNode.children[0].active = !0), this.lineNode.children[0].y - n.Instance.fruitHeigth > 100 && (this.lineNode.children[0].active = !1)
                 }, t.prototype.end = function() {
@@ -1120,7 +1120,7 @@ window.__require = function e(t, n, o) {
                     if (0 == this.endOne) {
                         for (var t = 0, n = function(n) {
                                 setTimeout(function() {
-                                    e.createFruitL(e.fruitNode.children[n].getComponent("fruitData").fruitNumber, e.fruitNode.children[n].position, e.fruitNode.children[n].width), a.default.score += window.ratio[0] * e.fruitNode.children[n].getComponent("fruitData").fruitNumber + 1, i.default.Instance.SetScoreTween(a.default.score), e.fruitNode.children[n].active = !1
+                                    e.createFruitL(e.fruitNode.children[n].getComponent("fruitData").fruitNumber, e.fruitNode.children[n].position, e.fruitNode.children[n].width), a.default.score += e.fruitNode.children[n].getComponent("fruitData").fruitNumber + 1, i.default.Instance.SetScoreTween(a.default.score), e.fruitNode.children[n].active = !1
                                 }, 100 * ++t)
                             }, o = this.fruitNode.children.length - 1; o >= 0; o--) n(o);
                         this.lineNode.active = !0;
@@ -1135,7 +1135,7 @@ window.__require = function e(t, n, o) {
                         for (var t = 0; t < this.fruitNode.children.length; t++) this.fruitNode.children[t].removeComponent(cc.PhysicsCircleCollider), this.fruitNode.children[t].removeComponent(cc.RigidBody);
                         for (var o = function(t) {
                                 setTimeout(function() {
-                                    e.createFruitL(e.fruitNode.children[t].getComponent("fruitData").fruitNumber, e.fruitNode.children[t].position, e.fruitNode.children[t].width), a.default.score += window.ratio[0] * e.fruitNode.children[t].getComponent("fruitData").fruitNumber + 1, i.default.Instance.SetScoreTween(a.default.score), e.fruitNode.children[t].active = !1
+                                    e.createFruitL(e.fruitNode.children[t].getComponent("fruitData").fruitNumber, e.fruitNode.children[t].position, e.fruitNode.children[t].width), a.default.score += e.fruitNode.children[t].getComponent("fruitData").fruitNumber + 1, i.default.Instance.SetScoreTween(a.default.score), e.fruitNode.children[t].active = !1
                                 }, 100 * t)
                             }, c = 0; c < this.fruitNode.children.length; c++) o(c);
                         this.lineNode.active = !0;
@@ -1535,7 +1535,7 @@ window.__require = function e(t, n, o) {
                 }, t.prototype.onTouchEnd = function(e) {
                     var t = this;
                     i.default.playerTouch && null != a.default.Instance.targetFruit && 1 == this.touchNum && (this.touchNum = 0, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).radius = a.default.Instance.targetFruit.height / 2, a.default.Instance.targetFruit.getComponent(cc.PhysicsCircleCollider).apply(), a.default.Instance.targetFruit.getComponent(cc.RigidBody).type = cc.RigidBodyType.Dynamic, a.default.Instance.targetFruit.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, -800), a.default.Instance.targetFruit = null, this.scheduleOnce(function() {
-                        i.default.GameUpdateCtrl && (0 == t.createFruitCount ? (a.default.Instance.createOneFruit(0), t.createFruitCount++) : 1 == t.createFruitCount ? (a.default.Instance.createOneFruit(0), t.createFruitCount++) : 2 == t.createFruitCount ? (a.default.Instance.createOneFruit(1), t.createFruitCount++) : 3 == t.createFruitCount ? (a.default.Instance.createOneFruit(2), t.createFruitCount++) : 4 == t.createFruitCount ? (a.default.Instance.createOneFruit(2), t.createFruitCount++) : 5 == t.createFruitCount ? (a.default.Instance.createOneFruit(3), t.createFruitCount++) : t.createFruitCount > 5 && (a.default.Instance.createOneFruit(s.default.RandomInteger(window.difficulty[0], window.difficulty[1])), t.createFruitCount++))
+                        i.default.GameUpdateCtrl && (0 == t.createFruitCount ? (a.default.Instance.createOneFruit(0), t.createFruitCount++)  : t.createFruitCount > 5 && (a.default.Instance.createOneFruit(s.default.RandomInteger(5, 8)), t.createFruitCount++))
                     }, .5))
                 }, t.prototype.closeTouch = function() {
                     this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this), this.node.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this), this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this), this.node.off(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this)
@@ -1616,8 +1616,8 @@ window.__require = function e(t, n, o) {
                     if (Math.abs(e.y - t.y) <= 15) {
                         p.default.Instance.Play(1, !1, 1), a.default.tuoweiCtrl = !0, d.default.Instance.InjuredEffect();
                         var n = r.default.Spawn("great", cc.find("Canvas/bazieffect"));
-                        e.x > 0 ? n.position = cc.v2(e.x - 40, e.y) : n.position = cc.v2(e.x + 40, e.y), n.runAction(cc.sequence(cc.spawn(cc.moveBy(.4, 0, 200), cc.rotateBy(.4, 360)), cc.scaleTo(.15, 1.1), cc.scaleTo(.15, 1), cc.fadeOut(.2))), a.default.score += 10 * window.ratio[1], d.default.Instance.SetScoreTween(a.default.score)
-                    } else p.default.Instance.Play(0, !1, 1), a.default.score += window.ratio[1] * 5, d.default.Instance.SetScoreTween(a.default.score)
+                        e.x > 0 ? n.position = cc.v2(e.x - 40, e.y) : n.position = cc.v2(e.x + 40, e.y), n.runAction(cc.sequence(cc.spawn(cc.moveBy(.4, 0, 200), cc.rotateBy(.4, 360)), cc.scaleTo(.15, 1.1), cc.scaleTo(.15, 1), cc.fadeOut(.2))), a.default.score += 10, d.default.Instance.SetScoreTween(a.default.score)
+                    } else p.default.Instance.Play(0, !1, 1), a.default.score += 5, d.default.Instance.SetScoreTween(a.default.score)
                 }, t.prototype.GhostBornEff = function(e, t) {
                     for (var n = s.default.RandomInteger(24, 36), o = 0; o < n; o++) {
                         var c = r.default.Spawn("star", cc.find("Canvas/downEffParent"));
@@ -1924,7 +1924,7 @@ window.__require = function e(t, n, o) {
                     this.targetScore != e && (this.targetScore = e, this.scoreChangeValue = Math.abs(this.targetScore - this.currentScore), this.isScoreChange = !0)
                 }, t.prototype.UpdateScoreLabel = function(e) {
                     if (this.isScoreChange) {
-                        this.currentScore += e * this.scoreChangeValue * 5 * window.ratio[1], this.currentScore >= this.targetScore && (this.currentScore = this.targetScore, this.isScoreChange = !1);
+                        this.currentScore += e * this.scoreChangeValue * 5, this.currentScore >= this.targetScore && (this.currentScore = this.targetScore, this.isScoreChange = !1);
                         var t = Math.floor(this.currentScore);
                         this.scoreLabel.string = t.toString()
                     }
@@ -3346,11 +3346,11 @@ window.__require = function e(t, n, o) {
                         t.node.parent = cc.find("Canvas/fruitNode"), i.default.Instance.fruitHeigth = i.default.Instance.findHighestFruit(), null != t.node.getComponent(cc.RigidBody) && (t.node.getComponent(cc.RigidBody).angularVelocity = 0);
                         var c = this.fruitNumber,
                             r = n.node.getComponent("fruitData").fruitNumber;
-                        c == r && c < 9 && r < 9 ? (this.pengzhuangCount += 1, 0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += window.ratio[0] * this.fruitNumber + 1, u.default.Instance.SetScoreTween(a.default.score), n.node.getComponent(cc.PhysicsCircleCollider).radius = 0, n.node.getComponent(cc.PhysicsCircleCollider).apply(), this.node.getComponent(cc.PhysicsCircleCollider).radius = 0, this.node.getComponent(cc.PhysicsCircleCollider).apply(), cc.tween(t.node).to(.1, {
+                        c == r && c < 9 && r < 9 ? (this.pengzhuangCount += 1, 0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + 1, u.default.Instance.SetScoreTween(a.default.score), n.node.getComponent(cc.PhysicsCircleCollider).radius = 0, n.node.getComponent(cc.PhysicsCircleCollider).apply(), this.node.getComponent(cc.PhysicsCircleCollider).radius = 0, this.node.getComponent(cc.PhysicsCircleCollider).apply(), cc.tween(t.node).to(.1, {
                             position: n.node.position
                         }).call(function() {
                             i.default.Instance.createFruitSui(o.fruitNumber, n.node.position), i.default.Instance.createFruitL(o.fruitNumber, n.node.position, n.node.width), i.default.Instance.createLevelUpFruit(o.fruitNumber + 1, n.node.position), n.node.active = !1, t.node.active = !1, n.node.destroy(), t.node.destroy()
-                        }).start())) : c == r && 9 == c && 9 == r && (this.pengzhuangCount += 1, 0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += window.ratio[0] * this.fruitNumber + 1, u.default.Instance.SetScoreTween(a.default.score), n.node.getComponent(cc.PhysicsCircleCollider).radius = 0, n.node.getComponent(cc.PhysicsCircleCollider).apply(), this.node.getComponent(cc.PhysicsCircleCollider).radius = 0, this.node.getComponent(cc.PhysicsCircleCollider).apply(), a.default.playerTouch = !1, cc.tween(t.node).to(.1, {
+                        }).start())) : c == r && 9 == c && 9 == r && (this.pengzhuangCount += 1, 0 == t.node.getComponent("fruitData").getNumber() && (a.default.score += this.fruitNumber + 1, u.default.Instance.SetScoreTween(a.default.score), n.node.getComponent(cc.PhysicsCircleCollider).radius = 0, n.node.getComponent(cc.PhysicsCircleCollider).apply(), this.node.getComponent(cc.PhysicsCircleCollider).radius = 0, this.node.getComponent(cc.PhysicsCircleCollider).apply(), a.default.playerTouch = !1, cc.tween(t.node).to(.1, {
                             position: n.node.position
                         }).call(function() {
                             i.default.Instance.createFruitSui(o.fruitNumber, n.node.position), i.default.Instance.createFruitL(o.fruitNumber, n.node.position, n.node.width), i.default.Instance.createLevelUpFruit(o.fruitNumber + 1, n.node.position);
@@ -3366,7 +3366,7 @@ window.__require = function e(t, n, o) {
                             }).repeatForever().start();
                             var s = new cc.Node;
                             s.addComponent(cc.Sprite).spriteFrame = l.default.Instance.fruit[10], s.parent = c, s.position = cc.v2(0), d.default.Instance.Play(4, !1, 1), i.default.Instance.ribbonEffect(cc.v2(0, 0)), c.runAction(cc.sequence(cc.spawn(cc.jumpBy(1, 0, 0, 300, 1), cc.scaleTo(1, 1)), cc.delayTime(1), cc.spawn(cc.moveTo(1, cc.v2(0, 500)), cc.scaleTo(1, 0)), cc.callFunc(function() {
-                                a.default.score += 100 * window.ratio[1], u.default.Instance.SetScoreTween(a.default.score), e.active = !1, a.default.playerTouch = !0, c.destroy()
+                                a.default.score += 100 , u.default.Instance.SetScoreTween(a.default.score), e.active = !1, a.default.playerTouch = !0, c.destroy()
                             }))), n.node.active = !1, t.node.active = !1, n.node.destroy(), t.node.destroy()
                         }).start()))
                     }
@@ -3669,7 +3669,7 @@ window.__require = function e(t, n, o) {
                         r.default.Despawn("shell", e)
                     }))), e.runAction(cc.repeatForever(cc.rotateBy(3, 1080)))
                 }, t.prototype.onCollisionEnter = function(e, t) {
-                    "shell" == e.node.group && 2 == e.node.getComponent("shellData").shellLife ? e.node.getComponent("shellData").shellLife -= 1 : "shell" == e.node.group && 1 == e.node.getComponent("shellData").shellLife && (u.default.Instance.Play(2, !1, 1), t.node.active = !1, s.default.Instance.cannonNodeArr[this.cannonNumber] = 0, this.createCannonSui(t.node), e.node.stopAllActions(), i.default.score += 10 * window.ratio[1], l.default.Instance.SetScoreTween(i.default.score), r.default.Despawn("shell", e.node), r.default.Despawn("peaCannon", t.node))
+                    "shell" == e.node.group && 2 == e.node.getComponent("shellData").shellLife ? e.node.getComponent("shellData").shellLife -= 1 : "shell" == e.node.group && 1 == e.node.getComponent("shellData").shellLife && (u.default.Instance.Play(2, !1, 1), t.node.active = !1, s.default.Instance.cannonNodeArr[this.cannonNumber] = 0, this.createCannonSui(t.node), e.node.stopAllActions(), i.default.score += 10, l.default.Instance.SetScoreTween(i.default.score), r.default.Despawn("shell", e.node), r.default.Despawn("peaCannon", t.node))
                 }, t.prototype.onCollisionStay = function(e, t) {}, t.prototype.onCollisionExit = function(e, t) {}, t.prototype.createCannonSui = function(e) {
                     var t = cc.instantiate(this.peaSuiPre);
                     t.parent = cc.find("Canvas/targetBoomNode"), t.position = e.position, t.scale = e.scale, t.angle = e.angle;
